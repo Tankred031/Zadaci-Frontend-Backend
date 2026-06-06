@@ -1,5 +1,5 @@
 body {
-    background-color: gold;
+    background-color: sienna;
     padding: 20px;
 }
 
@@ -10,10 +10,12 @@ h1 {
 }
 
 p {
-    background-color: sienna;
+    background-color: gold;
     color: crimson;
     width: 200px;
     height: 20px;
     padding: 16px;
     border-radius: 8px;
+    
+    font-weight: bold;
 }

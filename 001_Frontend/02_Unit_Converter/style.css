@@ -1,0 +1,19 @@
+body {
+    background-color: gold;
+    padding: 20px;
+}
+
+h1 {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+p {
+    background-color: sienna;
+    color: crimson;
+    width: 200px;
+    height: 20px;
+    padding: 16px;
+    border-radius: 8px;
+}

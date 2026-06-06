@@ -5,12 +5,12 @@ body {
 
 h1 {
     padding: 20px;
-    background-color: white;
+    background-color: gold;
     border-radius: 8px;
 }
 
 p {
-    background-color: gold;
+    background-color: white;
     color: crimson;
     width: 200px;
     height: 20px;

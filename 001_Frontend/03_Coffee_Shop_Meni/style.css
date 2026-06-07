@@ -1,0 +1,12 @@
+.header {
+    text-align: center;
+    color: #5a2d0c;
+    background-color: #ffebcd;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.menu-list {
+    background-color: #E6e6fa;
+    padding: 20px;
+}

@@ -1,34 +1,41 @@
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-let attempts = 10;
+let randomNumber = Math.floor(Math.random() * 10) + 1;
+let attempts = 3;
 
 function checkGuess() {
-    attempts--;
-
     const inputElement = document.getElementById("guess");
     const feedbackElement = document.getElementById("feedback");
 
-    const guess = inputElement.value;
+    let guess = Number(inputElement.value);
 
-    while (attempts > 0) {
-        if (guess === randomNumber) {
-            attempts = 0;
-            feedbackElement.innerHTML = "Congratulations!";
-            feedbackElement.style.color = "green";
-            break;
-        } else if (guess < randomNumber) {
-            feedbackElement.innerHTML = "Too low! Try again.";
-            feedbackElement.style.color = "red";
-        } else {
-            feedbackElement.innerHTML = "Too high! Try again.";
-            feedbackElement.style.color = "red";
-        }
-        
+    if (guess < 1 || guess > 10 || isNaN(guess)) {
+        feedbackElement.innerHTML = "Unesi broj između 1 i 10.";
+        feedbackElement.style.color = "orange";
+        return;
     }
 
-    if (attempts === 0 && guess !== randomNumber) {
-        feedbackElement.innerHTML = `Sorry, you're out of attempts! The correct number was ${randomNumber}`;
+    attempts--;
+
+    if (guess === randomNumber) {
+        feedbackElement.innerHTML = "Čestitam! Pogodio si broj!";
+        feedbackElement.style.color = "green";
+        inputElement.disabled = true;
+        return;
+    }
+
+    if (attempts === 0) {
+        feedbackElement.innerHTML = `Nemaš više pokušaja. Točan broj je bio ${randomNumber}.`;
+        feedbackElement.style.color = "red";
+        inputElement.disabled = true;
+        return;
+    }
+
+    if (guess < randomNumber) {
+        feedbackElement.innerHTML = `Prenisko! Preostalo pokušaja: ${attempts}`;
+        feedbackElement.style.color = "red";
+    } else {
+        feedbackElement.innerHTML = `Previsoko! Preostalo pokušaja: ${attempts}`;
         feedbackElement.style.color = "red";
     }
 
+    inputElement.value = "";
 }
-

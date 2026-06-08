@@ -6,41 +6,41 @@ let rounds = 0
 
 while (rounds < 3) {
 
-    let playerChoice = input("Choose 'odd' or 'even': ");
-    let playerNumber = parseInt(input("Choose a number between 1 and 5: "));
+    let playerChoice = input("Odaberi 'par' ili 'nepar': ");
+    let playerNumber = parseInt(input("Odaberi broj između 1 i 5: "));
 
     let computerNumber = Math.floor(Math.random() * 5) + 1;
     let computerChoice = "";
-    if (playerChoice === "odd") {
-        computerChoice = "even";
+    if (playerChoice === "par") {
+        computerChoice = "nepar";
     } else {
-        computerChoice = "odd";
+        computerChoice = "par";
     }
 
     let sum = playerNumber + computerNumber;
 
     let result = "";
     if (sum % 2 === 0) {
-        result = "even";
+        result = "par";
     } else {
-        result = "odd";
+        result = "nepar";
     }
 
-    console.log(`Player chose ${playerNumber} (${playerChoice})`);
-    console.log(`Computer chose ${computerNumber} (${computerChoice})`);
-    console.log(`The sum of the numbers is ${sum}, which is ${result}`);
+    console.log(`Ti si izabrao ${playerNumber} (${playerChoice})`);
+    console.log(`Kompjuter je izabrao ${computerNumber} (${computerChoice})`);
+    console.log(`Zbroj brojeva je ${sum}, stoga je ${result}`);
 
     if (result === playerChoice) {
-        console.log("Player wins!");
+        console.log("Pobjedio si!");
         playerWins++;
     } else {
-        console.log("Computer wins!");
+        console.log("Pobjedio je Kompjuter!");
         computerWins++;
     }
 
     rounds++;
 }
 
-console.log("FInal score:");
-console.log(`Player wins: ${playerWins}`);
-console.log(`Computer wins: ${computerWins}`);
+console.log("Ukupni rezultat:");
+console.log(`Pobjedio si: ${playerWins} puta`);
+console.log(`Kompjuter je pobjedio: ${computerWins} puta`);

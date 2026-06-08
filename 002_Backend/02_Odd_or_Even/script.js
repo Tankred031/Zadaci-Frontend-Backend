@@ -1,5 +1,4 @@
-const input = require("@mimo-org/input");
-
+const input = prompt
 
 let playerWins = 0;
 let computerWins = 0;
@@ -38,5 +37,10 @@ while (rounds < 3) {
         console.log("Computer wins!");
         computerWins++;
     }
+
     rounds++;
 }
+
+console.log("FInal score:");
+console.log(`Player wins: ${playerWins}`);
+console.log(`Computer wins: ${computerWins}`);

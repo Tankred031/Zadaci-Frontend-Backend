@@ -57,4 +57,9 @@ h1 {
     width: 150px;
     height: 150px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.thumbnail:hover {
+    transform: scale(1.1);
 }

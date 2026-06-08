@@ -1,29 +1,24 @@
 function convert() {
 
-    let inputValue = document.getElementById("userInput").value;
-    let unit = document.getElementById("unit").value;
-    const milesToKm = (unit === 'milesToKm');
-
+    const inputValue = document.getElementById("userInput").value;
+    const unit = document.getElementById("unit").value;
+    const resultElement = document.getElementById("resultElement");
+    
     let result = 0;
+    let resultString = "";
 
-    if (milesToKm === true) {
+    if (unit === milesToKm) {
         result = inputValue * 1.60934;
-
-        const resultString = inputValue + " milja iznosi " + result.toFixed(3) + " km";
-        console.log(resultString);
-
-        const resultElement = document.getElementById("resultElement");
-        resultElement.innerHTML = resultString;
-
+        resultString = inputValue + " milja iznosi " + result.toFixed(3) + " km";
+        //console.log(resultString);
 
     } else {
         result = inputValue / 1.60934;
+        resultString = inputValue + " km iznosi " + result.toFixed(3) + " milja";
+        //console.log(resultString);
     }
 
-    const resultString = inputValue + " km iznosi " + result.toFixed(3) + " milja";
     console.log(resultString);
-
-    const resultElement = document.getElementById("resultElement");
     resultElement.innerHTML = resultString;
 
 }

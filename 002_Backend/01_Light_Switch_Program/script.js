@@ -13,6 +13,3 @@ console.log(isLightOn);
 console.log(batteryLevel + "%");
 console.log("Everything working?");
 console.log(isWorking);
-
-
-

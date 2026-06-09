@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: green;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: limegreen;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: inset;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button {
+  padding: 10px;
+  margin: 15px;
+  background-color: orangered;
+  color: black;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellowgreen;
+}
+
+#result {
+  margin-top: 16px;
+  font-weight: bold;
+  font-size: 16px;
+  color: crimson;
+}

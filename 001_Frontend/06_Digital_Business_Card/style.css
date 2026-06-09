@@ -7,7 +7,7 @@ body, html {
 }
 
 .card {
-    background-color: white;
+    background-color: lightblue;
     padding-left: 20px;
     border-radius: 8px;
     width: 80%;
@@ -16,6 +16,9 @@ body, html {
     display: grid;
     grid-template-columns: 2fr 1fr;
     overflow: hidden;
+
+    gap: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1, h2 {
@@ -32,3 +35,44 @@ img {
     object-fit: cover;
 }
 
+.info {
+    padding: 20px 0;
+    display: grid;
+    grid-template-areas: 
+    "name-job"
+    "description"
+    "contacts";
+}
+
+.name-job {
+    grid-area: name-job;
+}
+
+.description {
+    margin-bottom: 50px;
+    grid-area: descripton;
+}
+
+.contact {
+    grid-area: contacts;
+}
+
+.common-text {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+}
+
+@media (max-width: 400px) {
+    .card {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "portrait"
+        "info";  
+        padding: 0;      
+    }
+
+    .info {
+        text-align: center;
+    }       
+
+}

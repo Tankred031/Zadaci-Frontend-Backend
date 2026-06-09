@@ -1,37 +1,67 @@
-const input = require("@mimo-org/input");
-
 const items = [];
 
 function displayList(items) {
-  console.log("\nHere is the list of items:");
+  const output = document.getElementById("output");
+
+  output.innerHTML = "<p>Here is the list of items:</p>";
+
+  if (items.length === 0) {
+    output.innerHTML += "<p>The list is empty.</p>";
+    return;
+  }
+
   items.forEach((item, index) => {
-    console.log(`${index + 1}. ${item}`);
+    output.innerHTML += `<p>${index + 1}. ${item}</p>`;
   });
 }
 
 function addItem(items, itemToAdd) {
   items.push(itemToAdd);
-  console.log(`"${itemToAdd}" has been added to the list.`);
+  displayList(items);
 }
 
-let running = true;
+function removeItem(items, itemIndex) {
+  displayList(items);
 
-while (running) {
-  console.log("\nChoose an option:");
-  console.log("1. View the list");
-  console.log("2. Add an item to the list");
-  console.log("3. Exit");
-
-  const choice = input("Enter your choice (1-3): ");
-  
-  if (choice == 1) {
+  if (itemIndex > 0 && itemIndex <= items.length) {
+    const removedItem = items.splice(itemIndex - 1, 1)[0];
     displayList(items);
-  } else if (choice == 2) {
-    const newItem = input("Enter a new item to add to the list: ");
-    addItem(items, newItem);
-  } else if (choice == 3) {
-    running = false;
+    return removedItem;
   } else {
-    console.log("Invalid choice, please select a valid option.");
+    const output = document.getElementById("output");
+    output.innerHTML += "<p>Invalid number. Please try again.</p>";
   }
+}
+
+function handleDisplayList() {
+  displayList(items);
+}
+
+function handleAddItem() {
+  const inputElement = document.getElementById("itemInput");
+  const newItem = inputElement.value;
+
+  if (newItem === "") {
+    const output = document.getElementById("output");
+    output.innerHTML = "<p>Please enter an item.</p>";
+    return;
+  }
+
+  addItem(items, newItem);
+
+  inputElement.value = "";
+}
+
+function handleRemoveItem() {
+  const removeInput = document.getElementById("removeInput");
+  const itemIndex = parseInt(removeInput.value, 10);
+
+  const removedItem = removeItem(items, itemIndex);
+
+  if (removedItem) {
+    const output = document.getElementById("output");
+    output.innerHTML += `<p>"${removedItem}" has been removed from the list.</p>`;
+  }
+
+  removeInput.value = "";
 }

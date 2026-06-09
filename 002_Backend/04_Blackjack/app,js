@@ -1,0 +1,152 @@
+let winner;
+
+const cards = [
+  { rank: "2", value: 2 },
+  { rank: "3", value: 3 },
+  { rank: "4", value: 4 },
+  { rank: "5", value: 5 },
+  { rank: "6", value: 6 },
+  { rank: "7", value: 7 },
+  { rank: "8", value: 8 },
+  { rank: "9", value: 9 },
+  { rank: "10", value: 10 },
+  { rank: "J", value: 10 },
+  { rank: "Q", value: 10 },
+  { rank: "K", value: 10 },
+  { rank: "A", value: 11 }
+];
+
+let playerHand = [];
+let dealerHand = [];
+let playerValue = 0;
+let dealerValue = 0;
+let gameOver = false;
+
+console.log("script.js je učitan");
+
+function drawCard() {
+  return cards[Math.floor(Math.random() * cards.length)];
+}
+
+function calculateHandValue(hand) {
+  let value = 0;
+  let aceCount = 0;
+
+  for (let card of hand) {
+    value += card.value;
+
+    if (card.rank === "A") {
+      aceCount += 1;
+    }
+  }
+
+  while (value > 21 && aceCount > 0) {
+    value -= 10;
+    aceCount -= 1;
+  }
+
+  return value;
+}
+
+function getHandRanks(hand) {
+  let ranks = "";
+
+  for (let i = 0; i < hand.length; i++) {
+    ranks += hand[i].rank;
+
+    if (i < hand.length - 1) {
+      ranks += ", ";
+    }
+  }
+
+  return ranks;
+}
+
+function displayGame(firstDealerCardOnly) {
+  const output = document.getElementById("gameOutput");
+
+  let dealerRanks = "";
+
+  if (firstDealerCardOnly) {
+    dealerRanks = dealerHand[0].rank + ", ?";
+  } else {
+    dealerRanks = getHandRanks(dealerHand);
+  }
+
+  output.innerHTML = `
+    <p><strong>Tvoje karte:</strong> ${getHandRanks(playerHand)}</p>
+    <p><strong>Tvoj rezultat:</strong> ${playerValue}</p>
+
+    <p><strong>Karte djelitelja:</strong> ${dealerRanks}</p>
+    ${firstDealerCardOnly ? "" : `<p><strong>Rezultat djelitelja:</strong> ${dealerValue}</p>`}
+  `;
+}
+
+function startGame() {
+  winner = "";
+  gameOver = false;
+
+  playerHand = [drawCard(), drawCard()];
+  dealerHand = [drawCard(), drawCard()];
+
+  playerValue = calculateHandValue(playerHand);
+  dealerValue = calculateHandValue(dealerHand);
+
+  displayGame(true);
+
+  if (playerValue === 21) {
+    stand();
+  }
+}
+
+function hit() {
+  if (gameOver) {
+    return;
+  }
+
+  playerHand.push(drawCard());
+  playerValue = calculateHandValue(playerHand);
+
+  displayGame(true);
+
+  if (playerValue > 21) {
+    winner = "Djelitelj";
+    gameOver = true;
+
+    const output = document.getElementById("gameOutput");
+    output.innerHTML += `
+      <p><strong>Prešao si 21! Djelitelj pobjeđuje.</strong></p>
+      <p><strong>Pobjednik:</strong> ${winner}</p>
+    `;
+  }
+}
+
+function stand() {
+  if (gameOver) {
+    return;
+  }
+
+  while (dealerValue < 17) {
+    dealerHand.push(drawCard());
+    dealerValue = calculateHandValue(dealerHand);
+  }
+
+  if (dealerValue > 21 || playerValue > dealerValue) {
+    winner = "Igrač";
+  } else if (playerValue < dealerValue) {
+    winner = "Djelitelj";
+  } else {
+    winner = "Neriješeno";
+  }
+
+  gameOver = true;
+
+  displayGame(false);
+
+  const output = document.getElementById("gameOutput");
+  output.innerHTML += `
+    <p><strong>Tvoj konačni rezultat:</strong> ${playerValue}</p>
+    <p><strong>Konačni rezultat djelitelja:</strong> ${dealerValue}</p>
+    <p><strong>Pobjednik:</strong> ${winner}</p>
+  `;
+}

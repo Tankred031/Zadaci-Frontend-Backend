@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typewriter Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Moj portfolio s pisaćeg stroja</h1>
+        <nav>
+            <a href="#omeni">O meni</a>
+            <a href="#vjestine">Vještine</a>
+            <a href="#projekti">Projekti</a>
+        </nav>
+    </header>
+    <section id="omeni">
+        <h2>O meni</h2>
+        <img src="../06_Digital_Business_Card/FD2.png" alt="profilna" class="profil">
+        <p>Ja sam Tankred, budući developer. Osim što volim kodirati, volim vino, sir, SF-filmove.</p>
+    </section>
+    <section id="vjestine">
+        <h2>Vještine</h2>
+        <div class="skill-item">
+            <label for="html-skill">HTML</label>
+            <progress id="html-skill" value="90" max="100">90%</progress>
+        </div>
+        <div class="skill-item">
+            <label for="css-skill">CSS</label>
+            <progress id="css-skill" value="75" max="100">75%</progress>
+        </div>
+        <div class="skill-item">
+            <label for="js-skill">JS</label>
+            <progress id="js-skill" value="90" max="100">50%</progress>
+        </div>
+    </section>
+    <section id="projekti">
+        <h2>Projekti</h2>
+        <div class="project-list">
+            <details>
+                <summary>Dekoder Cezarove šifre</summary>
+                <p>Mali projekt koji sam napravio za kolegu za tajne poruke</p>
+                <a href="../09_Ceasar_Cipher/index.html" target="_blank">Link projekta</a>
+            </details>
+            <details>
+                <summary>Rick i Monty kompas likova</summary>
+                <p>Kao veliki ljubitelj ovoga, napravio sam si bazu/kompas likova.</p>
+                <a href="../08_Rick_and_Morty/index.html" target="_blank">Link projekta</a>
+            </details>
+        </div>
+    </section>
+    
+</body>
+</html>

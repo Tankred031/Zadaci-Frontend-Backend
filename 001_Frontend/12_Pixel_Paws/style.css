@@ -29,3 +29,25 @@ body {
   cursor: pointer;
   margin-top: 10px;
 }
+
+.treat-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.treat-wrapper {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.treat {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.treat:hover {
+  transform: scale(1.2);
+}

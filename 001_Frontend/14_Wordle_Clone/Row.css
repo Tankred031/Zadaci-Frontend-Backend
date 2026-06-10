@@ -20,10 +20,11 @@
   background-color: green;
 }
 
-.letter.present {
-  background-color: gold;
-}
-
 .letter.absent {
   background-color: lightgray;
+}
+
+.letter.present {
+  background-color: gold;
+  color: black;
 }

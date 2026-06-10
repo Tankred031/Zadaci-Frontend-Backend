@@ -3,51 +3,63 @@ import "./App.css";
 import Row from "./Row";
 
 const App = () => {
-  const targetWord = "REACT";
-  const maxAttempts = 6;
+    const targetWord = "REACT";
+    const maxAttempts = 6;
 
-  const [guesses, setGuesses] = useState([]);
-  const [currentGuess, setCurrentGuess] = useState("");
-  const [isGameOver, setIsGameOver] = useState(false);
+    const [guesses, setGuesses] = useState([]);
+    const [currentGuess, setCurrentGuess] = useState("");
+    const [isGameOver, setIsGameOver] = useState(false);
+    const [didWin, setDidWin] = useState(false);
 
-  const handleInputChange = (event) => {
-    setCurrentGuess(event.target.value.toUpperCase());
-  };
+    const handleInputChange = (event) => {
+        setCurrentGuess(event.target.value.toUpperCase());
+    };
 
-  const handleGuess = () => {
-    if (currentGuess.length !== 5) {
-      return;
-    }
+    const handleGuess = () => {
+        if (currentGuess.length !== 5) {
+            return;
+        }
 
-    const updatedGuesses = [...guesses, currentGuess];
-    setGuesses(updatedGuesses);
+        const updatedGuesses = [...guesses, currentGuess];
+        setGuesses(updatedGuesses);
 
-    if (currentGuess === targetWord || updatedGuesses.length >= maxAttempts) {
-      setIsGameOver(true);
-    }
-  };
+        if (currentGuess === targetWord) {
+            setDidWin(true);
+            setIsGameOver(true);
+        } else if (updatedGuesses.length >= maxAttempts) {
+            setIsGameOver(true);
+        }
 
-  return (
-    <div className="main-container">
-      <h1>Wordle</h1>
-      {guesses.map((guess, index) => (
-        <Row key={index} guess={guess} targetWord={targetWord} />
-      ))}
-      {!isGameOver && (
-        <>
-          <input
-            onChange={handleInputChange}
-            maxLength={targetWord.length}
-            placeholder="Enter your guess"
-          />
-          <button onClick={handleGuess}>Guess</button>
-        </>
-      )}
-      {isGameOver && currentGuess !== targetWord && (
-        <p>{`Game over! The word was: ${targetWord}`}</p>
-      )}
-    </div>
-  );
+        setCurrentGuess("");
+    };
+
+    return (
+        <div className="main-container">
+            <h1>Wordle</h1>
+
+            {guesses.map((guess, index) => (
+                <Row key={index} guess={guess} targetWord={targetWord} />
+            ))}
+
+            {!isGameOver && (
+                <>
+                    <input
+                        value={currentGuess}
+                        onChange={handleInputChange}
+                        maxLength={targetWord.length}
+                        placeholder="Enter your guess"
+                    />
+                    <button onClick={handleGuess}>Guess</button>
+                </>
+            )}
+
+            {isGameOver && didWin && <p>Bravo! Pogodio si riječ.</p>}
+
+            {isGameOver && !didWin && (
+                <p>{`Game over! The word was: ${targetWord}`}</p>
+            )}
+        </div>
+    );
 };
 
 export default App;

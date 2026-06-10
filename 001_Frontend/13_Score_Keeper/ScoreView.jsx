@@ -1,11 +1,11 @@
 import React from "react";
+import "./ScoreView.css";
 
-const ScoreView = (props) => {
+const ScoreView = ({ teamName, score, leading }) => {
   return (
-    <div>
-      <h2>
-        {props.teamName}: {props.score}
-      </h2>
+    <div className={`score-view-wrapper-leading-${leading}`}>
+      <h2>{teamName}</h2>
+      <p>Score: {score}</p>
     </div>
   );
 };

@@ -1,20 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com");
 
 body {
-  margin: 0;
   font-family: "Press Start 2P", sans-serif;
   background-color: #F7E39C;
   text-align: center;
-}
-
-.content {
-  width: 90%;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-p {
-  line-height: 1.5;
+  margin: 0;
 }
 
 nav {
@@ -36,5 +26,19 @@ nav a {
 }
 
 nav a:hover {
+  color: #000000;
+}
+
+.content {
+  width: 90%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
   color: black;
 }

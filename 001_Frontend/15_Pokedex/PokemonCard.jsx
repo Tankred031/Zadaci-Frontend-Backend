@@ -1,18 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./PokemonCard.css";
 
 const PokemonCard = ({ pokemon }) => {
+  const pokemonId = pokemon.url.split("/").filter(Boolean).pop();
+  const spriteUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png`;
+
   return (
-    <div className="pokemon-card">
-      <img
-        src={`https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon/${pokemon.url
-          .split("/")
-          .filter(Boolean)
-          .pop()}.png`}
-        alt={pokemon.name}
-      />
-      <h2>{pokemon.name}</h2>
-    </div>
+    <Link to={`/pokemon?name=${pokemon.name}`} className="pokemon-card-link">
+      <div className="pokemon-card">
+        <img src={spriteUrl} alt={pokemon.name} />
+        <h2>{pokemon.name}</h2>
+      </div>
+    </Link>
   );
 };
 

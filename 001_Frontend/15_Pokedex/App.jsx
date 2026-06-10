@@ -1,19 +1,18 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Pokedex from "./Pokedex";
 import Search from "./Search";
+import Pokemon from "./Pokemon"; // Imported Pokemon
+import "./App.css";
 
-const NavigationBar = () => {
-  return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/pokedex">Pokédex</Link>
-      <Link to="/search">Search</Link>
-    </nav>
-  );
-};
+const NavigationBar = () => (
+  <nav>
+    <Link to="/">Home</Link>
+    <Link to="/pokedex">Pokédex</Link>
+    <Link to="/search">Search</Link>
+  </nav>
+);
 
 const App = () => (
   <BrowserRouter>
@@ -23,6 +22,7 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/pokedex" element={<Pokedex />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/pokemon" element={<Pokemon />} /> {/* Added Pokemon Route */}
       </Routes>
     </div>
   </BrowserRouter>

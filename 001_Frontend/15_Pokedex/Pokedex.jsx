@@ -4,25 +4,27 @@ import PokemonCard from "./PokemonCard";
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
 
-  const fetchPokemons = async () => {
-    fetch("https://pokedex.mimo.dev/api/pokemon")
-      .then((response) => response.json())
-      .then((data) => setPokemons(data));
-  };
-
   useEffect(() => {
+    const fetchPokemons = async () => {
+      try {
+        const response = await fetch("https://pokedex.mimo.dev");
+        const data = await response.json();
+        setPokemons(data);
+      } catch (error) {
+        console.error("Error fetching Pokémon:", error);
+      }
+    };
+
     fetchPokemons();
   }, []);
 
   return (
-    <>
-      <h1>All Pokemon</h1>
-      <ul>
-        {pokemons.map((pokemon, index) => (
-          <PokemonCard key={index} pokemon={pokemon} />
-        ))}
-      </ul>
-    </>
+    <div>
+      <h1>Pokédex</h1>
+      {pokemons.map((pokemon, index) => (
+        <PokemonCard key={index} pokemon={pokemon} />
+      ))}
+    </div>
   );
 };
 

@@ -20,6 +20,10 @@ body {
   width: 240px;
 }
 
+.pet.selected {
+  border: 2px solid red;
+}
+
 .emoji {
   font-size: 70px;
   cursor: pointer;

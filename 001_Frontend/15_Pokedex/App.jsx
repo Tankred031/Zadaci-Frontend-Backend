@@ -3,12 +3,14 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Pokedex from "./Pokedex";
+import Search from "./Search";
 
 const NavigationBar = () => {
   return (
     <nav>
       <Link to="/">Home</Link>
       <Link to="/pokedex">Pokédex</Link>
+      <Link to="/search">Search</Link>
     </nav>
   );
 };
@@ -20,6 +22,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pokedex" element={<Pokedex />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </div>
   </BrowserRouter>

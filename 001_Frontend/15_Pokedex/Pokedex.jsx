@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PokemonCard from "./PokemonCard";
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -18,7 +19,7 @@ const Pokedex = () => {
       <h1>All Pokemon</h1>
       <ul>
         {pokemons.map((pokemon, index) => (
-          <li key={index}>{pokemon.name}</li>
+          <PokemonCard key={index} pokemon={pokemon} />
         ))}
       </ul>
     </>

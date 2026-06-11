@@ -7,9 +7,11 @@ const Pokedex = () => {
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
-        const response = await fetch("https://pokedex.mimo.dev");
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
         const data = await response.json();
-        setPokemons(data);
+        setPokemons(data.results);
+
+        console.log(data);
       } catch (error) {
         console.error("Error fetching Pokémon:", error);
       }
